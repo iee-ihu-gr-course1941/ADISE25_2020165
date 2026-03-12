@@ -1,0 +1,15 @@
+# Ξερή - URL Rewriting for REST API
+php_flag display_startup_errors on
+php_flag display_errors on
+php_flag log_errors on
+
+Require all granted
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # Adjust RewriteBase: /xeri/ for http://localhost/xeri/, / for root
+    RewriteBase /xeri/
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php?request=$1 [QSA,L]
+</IfModule>
